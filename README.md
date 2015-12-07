@@ -13,9 +13,3 @@ This is a repo for a starter appliation for a Single Page MEAN Stack application
 Ensure MongoDB is running
 
 Use this starter kit to build any MEAN stack application you like.  Based upon the initial project by scotch.io
-
-## Future Additions
-- CRUD examples
-- Development and Production Environments
-- Link examples
-- Single Page AngularJS Animations
