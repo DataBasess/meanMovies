@@ -17,6 +17,28 @@ module.exports = function(app) {
         });
     });
 
+    app.post('/api/nerds', function (req, res) {
+    	var newNerd = new Nerd(req.body)
+    	newNerd.save(function (err, newNerd) {
+
+			if (err) {
+	            res.status(500);
+	            res.json({
+	                status: 500,
+	                error: err
+	            });
+	            res.end();
+	        }
+	        else {
+	            res.json({
+	                status: 200,
+	                newNerd: newNerd
+	            });
+	            res.end();
+	        }
+		});
+    });
+
 	// authentication routes
 
 	// frontend routes =========================================================
