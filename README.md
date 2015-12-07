@@ -1,6 +1,6 @@
 # MEAN Stack Single Page Application Starter
 
-This is a repo for a starter appliation for a Single Page MEAN Stack application. Just download and install and you have a good foundation for building application. 
+This is a repo for a starter appliation for a Single Page MEAN Stack application. Just download and install and you have a good foundation for building applications. 
 
 ## Installation
 1. Download the repository
@@ -10,9 +10,9 @@ This is a repo for a starter appliation for a Single Page MEAN Stack application
 5. Start up the server: `node server.js`
 6. View in browser at http://localhost:8080
 
-Use this starter kit to build any MEAN stack application you like.
+Ensure MongoDB is running
 
-If you have any questions or requests, email us at [chris@scotch.io](mailto:chris@scotch.io) and we'll keep updating this to make it perfect.
+Use this starter kit to build any MEAN stack application you like.  Based upon the initial project by scotch.io
 
 ## Future Additions
 - CRUD examples
