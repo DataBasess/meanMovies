@@ -4,12 +4,12 @@
 	<p>{{ tagline }}</p>
 
 	<div ng-repeat="movie in nerds">
-		<p>{{movie.title}} ({{movie.year}}) - {{movie.director}}</p>
+		<p>{{movie.title}} ({{movie.year}}) - {{movie.director}}   <input type="button" value="X" ng-click="delMovie(movie._id)"> </p>
 	</div>
 	<div>
 		<input placeholder="Title" 		ng-model="newMovieTitle" />
 		<input placeholder="Year" 		ng-model="newMovieYear" />
 		<input placeholder="Director" 	ng-model="newMovieDirector" />
-		<input type="button" value="Save" ng-click="createMove()" />
+		<input type="button" value="Save" ng-click="createMovie()" />
 	</div>
 </div>

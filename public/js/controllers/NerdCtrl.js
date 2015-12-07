@@ -9,7 +9,7 @@ angular.module('NerdCtrl', []).controller('NerdController', function($scope, Ner
 		$scope.nerds = data
 	});
 
-	$scope.createMove = function () {
+	$scope.createMovie = function () {
 		if (!$scope.newMovieTitle || !$scope.newMovieYear || !$scope.newMovieDirector) return;
 		// console.log('saving', $scope.newMovieTitle, $scope.newMovieYear, $scope.newMovieDirector)
 
@@ -22,6 +22,15 @@ angular.module('NerdCtrl', []).controller('NerdController', function($scope, Ner
 		Nerd.create(newMovie).success(function (data) {
 			// console.log('successful save', data)
 			$scope.newMovieTitle = $scope.newMovieYear = $scope.newMovieDirector =''
+			Nerd.get().success(function (nerds) {
+				$scope.nerds = nerds
+			});
+		});
+	}
+
+	$scope.delMovie = function (id) {
+		// console.log('deleting from controller', id)
+		Nerd.delete(id).success(function (data) {
 			Nerd.get().success(function (nerds) {
 				$scope.nerds = nerds
 			});

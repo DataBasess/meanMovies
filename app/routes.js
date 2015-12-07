@@ -39,6 +39,49 @@ module.exports = function(app) {
 		});
     });
 
+    app.put('/api/nerds/:id', function (req, res) {
+    	var nerd = new Nerd(req.body)
+    	// console.log(nerd)
+    	nerd.update(function (err, nerd) {
+			if (err) {
+	            res.status(500);
+	            res.json({
+	                status: 500,
+	                error: err
+	            });
+	            res.end();
+	        }
+	        else {
+	            res.json({
+	                status: 200,
+	                nerd: nerd
+	            });
+	            res.end();
+	        }    		
+    	})
+    });
+
+    app.delete('/api/nerds/:id', function(req, res) {
+    	// console.log('deleting from routes', req.params)
+        Nerd.remove({_id: req.params.id }, function(err, nerd) {
+        	if (err) {
+	            res.status(500);
+	            res.json({
+	                status: 500,
+	                error: err
+	            });
+	            res.end();
+	        }
+	        else {
+	            res.json({
+	                status: 200,
+	                message: 'Successfully deleted'
+	            });
+	            res.end();
+	        } 	
+        });
+    });
+
 	// authentication routes
 
 	// frontend routes =========================================================
