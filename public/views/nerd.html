@@ -2,4 +2,8 @@
 	<h1>Nerds and Proud</h1>
 
 	<p>{{ tagline }}</p>
+
+	<div ng-repeat="movie in nerds">
+		<p>{{movie.title}} ({{movie.year}}) - {{movie.director}}</p>
+	</div>
 </div>
