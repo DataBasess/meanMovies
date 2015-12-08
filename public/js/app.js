@@ -1,4 +1,4 @@
-angular.module('sampleApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'NerdCtrl', 'NerdService', 'GeekCtrl', 'GeekService', 'ui.bootstrap'])
+angular.module('sampleApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'MovieCtrl', 'MovieService', 'GeekCtrl', 'GeekService', 'ui.bootstrap'])
 .controller('HeaderController', function($scope, $location) {
   $scope.isActive = function (viewLocation) {
     return $location.path().indexOf(viewLocation) >= 0;

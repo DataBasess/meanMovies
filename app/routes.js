@@ -1,4 +1,4 @@
-var Nerd = require('./models/Nerd')
+var Movie = require('./models/Movie')
 
 module.exports = function(app) {
 
@@ -6,20 +6,20 @@ module.exports = function(app) {
 	// handle things like api calls
 
 
-	app.get('/api/nerds', function (req, res) {
+	app.get('/api/movies', function (req, res) {
         //use mongoose to get all nerds from the database
-        Nerd.find(function(err, nerds){
+        Movie.find(function(err, movies){
             if(err){
                 res.send(err);
             }else{
-                res.json(nerds);
+                res.json(movies);
             }
         });
     });
 
-    app.post('/api/nerds', function (req, res) {
-    	var newNerd = new Nerd(req.body)
-    	newNerd.save(function (err, newNerd) {
+    app.post('/api/movies', function (req, res) {
+    	var newMovie = new Movie(req.body)
+    	newMovie.save(function (err, newMovie) {
 
 			if (err) {
 	            res.status(500);
@@ -32,17 +32,17 @@ module.exports = function(app) {
 	        else {
 	            res.json({
 	                status: 200,
-	                newNerd: newNerd
+	                newMovie: newMovie
 	            });
 	            res.end();
 	        }
 		});
     });
 
-    app.put('/api/nerds/:id', function (req, res) {
-    	var nerd = new Nerd(req.body)
-    	// console.log(nerd)
-    	nerd.update(function (err, nerd) {
+    app.put('/api/movies/:id', function (req, res) {
+    	var movie = new Movie(req.body)
+    	// console.log(movie)
+    	movie.update(function (err, movie) {
 			if (err) {
 	            res.status(500);
 	            res.json({
@@ -54,16 +54,16 @@ module.exports = function(app) {
 	        else {
 	            res.json({
 	                status: 200,
-	                nerd: nerd
+	                movie: movie
 	            });
 	            res.end();
 	        }    		
     	})
     });
 
-    app.delete('/api/nerds/:id', function(req, res) {
+    app.delete('/api/movies/:id', function(req, res) {
     	// console.log('deleting from routes', req.params)
-        Nerd.remove({_id: req.params.id }, function(err, nerd) {
+        Movie.remove({_id: req.params.id }, function(err, movie) {
         	if (err) {
 	            res.status(500);
 	            res.json({
@@ -75,7 +75,7 @@ module.exports = function(app) {
 	        else {
 	            res.json({
 	                status: 200,
-	                message: 'Successfully deleted'
+	                message: 'Movie successfully deleted'
 	            });
 	            res.end();
 	        } 	

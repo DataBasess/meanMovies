@@ -1,12 +1,12 @@
 
 
-angular.module('NerdCtrl', []).controller('NerdController', function($scope, Nerd) {
+angular.module('MovieCtrl', []).controller('MovieController', function($scope, Movie) {
 
 	$scope.tagline = 'Nothing beats a pocket protector!';
 
-	Nerd.get().success(function (data) {
-		$scope.tagline += ' Got more nerds'
-		$scope.nerds = data
+	Movie.get().success(function (data) {
+		$scope.tagline += ' Text from MovieController!'
+		$scope.movies = data
 	});
 
 	$scope.createMovie = function () {
@@ -19,20 +19,20 @@ angular.module('NerdCtrl', []).controller('NerdController', function($scope, Ner
 			director: $scope.newMovieDirector
 		}
 
-		Nerd.create(newMovie).success(function (data) {
+		Movie.create(newMovie).success(function (data) {
 			// console.log('successful save', data)
 			$scope.newMovieTitle = $scope.newMovieYear = $scope.newMovieDirector =''
-			Nerd.get().success(function (nerds) {
-				$scope.nerds = nerds
+			Movie.get().success(function (movies) {
+				$scope.movies = movies
 			});
 		});
 	}
 
 	$scope.delMovie = function (id) {
 		// console.log('deleting from controller', id)
-		Nerd.delete(id).success(function (data) {
-			Nerd.get().success(function (nerds) {
-				$scope.nerds = nerds
+		Movie.delete(id).success(function (data) {
+			Movie.get().success(function (movies) {
+				$scope.movies = movies
 			});
 		});
 	}
