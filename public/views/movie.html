@@ -4,18 +4,18 @@
 	<p>{{ tagline }}</p>
 
 	<h2>Your Movies</h2>
-	<div ng-repeat="movie in movies">
+
+	<div ng-repeat="movie in movies" >
 		<form editable-form name="editableForm" onaftersave="saveMovie($data, movie._id)">
-			<p>
-				<span editable-text="movie.title" e-name="title" onbeforesave="checkTitle($data)" e-required>{{ movie.title || 'empty' }}</span>
-				<span editable-number="movie.year" e-name="year" onbeforesave="checkYear($data)" e-min="1900" e-max="2050" e-required>{{ movie.year || 'empty' }}</span>
-				<span editable-text="movie.director" e-name="director" onbeforesave="checkDirector($data)" e-required>{{ movie.director || 'empty' }}</span>
+			<p class="item">
+				<span class="movieYear" movieYear="{{movie.year}}" editable-text="movie.title" e-name="title" onbeforesave="checkTitle($data)" e-required>{{ movie.title || 'empty' }}</span>
+				<span class="moveTitle" moveTitle="{{movie.title}}" editable-number="movie.year" e-name="year" onbeforesave="checkYear($data)" e-min="1900" e-max="2050" e-required>{{ movie.year || 'empty' }}</span>
+				<span class="movieDirector" movieDirector="{{movie.director}}" editable-text="movie.director" e-name="director" onbeforesave="checkDirector($data)" e-required>{{ movie.director || 'empty' }}</span>
 				<!-- button to show form -->
 				<button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">Edit</button>
 			</p>
 
-			<div>
-		      <!-- buttons to submit / cancel form and delete record -->
+			<div>  <!-- buttons to submit / cancel form and delete record -->
 		      <span ng-show="editableForm.$visible">
 		        <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">Save</button>
 		        <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">Cancel</button>
@@ -24,14 +24,14 @@
 		    </div>
 		</form>
 	</div>
+
 	<hr />
 	<h3>Add New Movie</h3>
 	<div>
 		<form name="inputForm" ng-submit="createMovie(inputForm.$valid)">
-			<input placeholder="Title" 		ng-model="newMovieTitle" required />
-			<input placeholder="Year"  type="number" min="1900" max="2050"		ng-model="newMovieYear" required/>
-			<input placeholder="Director" 	ng-model="newMovieDirector" required/>
-
+			<input placeholder="Title" ng-model="newMovieTitle" required />
+			<input placeholder="Year" type="number" min="1900" max="2050" ng-model="newMovieYear" required />
+			<input placeholder="Director" ng-model="newMovieDirector" required />
 			<button type="submit" class="btn btn-primary" ng-disabled="inputForm.$invalid">Save</button>
 		</form>
 	</div>
