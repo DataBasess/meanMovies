@@ -18,5 +18,7 @@ angular.module('sampleApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'NerdCtrl', 'Ne
 	//   $('.navbar-collapse').collapse('hide');
 	// });
  //  }
+}).controller('FooterController', function($scope, $location) {
+
 })
 

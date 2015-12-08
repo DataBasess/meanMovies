@@ -1,1 +1,10 @@
-body { padding-top:30px; }
+body { padding-top:30px; margin-bottom: 40px; }
+
+
+.footer {
+  height: 40px;
+}
+
+.footer a {
+  color: white;
+}
