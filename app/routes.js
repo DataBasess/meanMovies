@@ -40,10 +40,16 @@ module.exports = function(app) {
     });
 
     app.put('/api/movies/:id', function (req, res) {
-    	var movie = new Movie(req.body)
-    	// console.log(movie)
-    	movie.update(function (err, movie) {
-			if (err) {
+    	
+    	var updateData = { // this way protects the data
+    		title: req.body.title,
+    		year: req.body.year,
+    		director: req.body.director
+    	}
+
+
+    	Movie.update({_id: req.body._id}, updateData, function(err, movie) {
+    		if (err) {
 	            res.status(500);
 	            res.json({
 	                status: 500,
@@ -57,8 +63,8 @@ module.exports = function(app) {
 	                movie: movie
 	            });
 	            res.end();
-	        }    		
-    	})
+	        }
+    	});
     });
 
     app.delete('/api/movies/:id', function(req, res) {

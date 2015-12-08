@@ -15,6 +15,10 @@ angular.module('MovieService', []).factory('Movie', ['$http', function($http) {
 	    // call to DELETE a nerd
 	    delete : function(id) {
 	        return $http.delete('/api/movies/' + id);
+	    },
+
+	    update : function(movieData) {
+	    	return $http.put('/api/movies/' + movieData._id, movieData);
 	    }
 	} 
 	
