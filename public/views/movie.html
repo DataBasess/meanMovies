@@ -10,32 +10,18 @@
 				<span editable-text="movie.title" e-name="title" onbeforesave="checkTitle($data)" e-required>{{ movie.title || 'empty' }}</span>
 				<span editable-text="movie.year" e-name="year" onbeforesave="checkYear($data)" e-required>{{ movie.year || 'empty' }}</span>
 				<span editable-text="movie.director" e-name="director" onbeforesave="checkDirector($data)" e-required>{{ movie.director || 'empty' }}</span>
-				<button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
-		        Edit
-		      </button>
-
+				<!-- button to show form -->
+				<button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">Edit</button>
 			</p>
-			
-
 
 			<div>
-		      <!-- button to show form -->
-		      
-		      <!-- buttons to submit / cancel form -->
+		      <!-- buttons to submit / cancel form and delete record -->
 		      <span ng-show="editableForm.$visible">
-		        <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
-		          Save
-		        </button>
-		        <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
-		          Cancel
-		        </button>
-		        <button type="button" class="btn btn-danger" ng-disabled="editableForm.$waiting" ng-click="delMovie(movie._id)">
-		         Delete
-		         </button>
+		        <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">Save</button>
+		        <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">Cancel</button>
+		        <button type="button" class="btn btn-danger" ng-disabled="editableForm.$waiting" ng-click="delMovie(movie._id)">Delete</button>
 		      </span>
 		    </div>
-
-
 		</form>
 	</div>
 	<hr />

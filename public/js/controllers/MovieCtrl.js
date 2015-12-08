@@ -51,17 +51,6 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, M
 				$scope.movies = movies
 			});
     	});
-
-
-	    // return $http.post('/saveUser', $scope.user).error(function(err) {
-	    //   if(err.field && err.msg) {
-	    //     // err like {field: "name", msg: "Server-side error for this username!"} 
-	    //     $scope.editableForm.$setError(err.field, err.msg);
-	    //   } else { 
-	    //     // unknown error
-	    //     $scope.editableForm.$setError('name', 'Unknown error!');
-	    //   }
-	    // });
-	  };
+	 }
 
 });
