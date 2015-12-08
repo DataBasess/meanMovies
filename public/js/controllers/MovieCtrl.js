@@ -8,9 +8,10 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, M
 		$scope.movies = data
 	});
 
-	$scope.createMovie = function () {
-		if (!$scope.newMovieTitle || !$scope.newMovieYear || !$scope.newMovieDirector) return;
-		// console.log('saving', $scope.newMovieTitle, $scope.newMovieYear, $scope.newMovieDirector)
+	$scope.createMovie = function (isValid) {
+		if (!isValid) return;
+		// if (!$scope.newMovieTitle || !$scope.newMovieYear || !$scope.newMovieDirector) return;
+		// console.log('creating movie', $scope.newMovieTitle, $scope.newMovieYear, $scope.newMovieDirector)
 
 		var newMovie = {
 			title: $scope.newMovieTitle,
@@ -37,9 +38,13 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, M
 	}
 
 	$scope.checkTitle = function(data) {
-    	if (data.length == 0) {
-			return "UTitle is required";
-		}
+    	// return "something";
+	}
+	$scope.checkYear = function(data) {
+    	// return "yyyy"
+	}
+	$scope.checkDirector = function(data) {
+    	// return "err"
 	}
 
 	$scope.saveMovie = function(data, id) {

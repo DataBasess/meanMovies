@@ -8,7 +8,7 @@
 		<form editable-form name="editableForm" onaftersave="saveMovie($data, movie._id)">
 			<p>
 				<span editable-text="movie.title" e-name="title" onbeforesave="checkTitle($data)" e-required>{{ movie.title || 'empty' }}</span>
-				<span editable-text="movie.year" e-name="year" onbeforesave="checkYear($data)" e-required>{{ movie.year || 'empty' }}</span>
+				<span editable-number="movie.year" e-name="year" onbeforesave="checkYear($data)" e-min="1900" e-max="2050" e-required>{{ movie.year || 'empty' }}</span>
 				<span editable-text="movie.director" e-name="director" onbeforesave="checkDirector($data)" e-required>{{ movie.director || 'empty' }}</span>
 				<!-- button to show form -->
 				<button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">Edit</button>
@@ -27,9 +27,12 @@
 	<hr />
 	<h3>Add New Movie</h3>
 	<div>
-		<input placeholder="Title" 		ng-model="newMovieTitle" />
-		<input placeholder="Year" 		ng-model="newMovieYear" />
-		<input placeholder="Director" 	ng-model="newMovieDirector" />
-		<input type="button" value="Save" ng-click="createMovie()" />
+		<form name="inputForm" ng-submit="createMovie(inputForm.$valid)">
+			<input placeholder="Title" 		ng-model="newMovieTitle" required />
+			<input placeholder="Year"  type="number" min="1900" max="2050"		ng-model="newMovieYear" required/>
+			<input placeholder="Director" 	ng-model="newMovieDirector" required/>
+
+			<button type="submit" class="btn btn-primary" ng-disabled="inputForm.$invalid">Save</button>
+		</form>
 	</div>
 </div>
