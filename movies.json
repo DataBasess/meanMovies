@@ -1,5 +1,4 @@
-{
-  "movies": [
+[
     {
       "title": "Star Wars",
       "year": 1977,
@@ -34,6 +33,10 @@
       "title": "The Force Awakens",
       "year": 2015,
       "director": "J.J. Abrams"
+    },
+    {
+      "title": "Rogue One",
+      "year": 2016,
+      "director": "Gareth Edwards"
     }
   ]
-}

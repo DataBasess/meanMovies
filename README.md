@@ -1,16 +1,40 @@
-# MEAN Stack Single Page Application Starter
+# MEAN Stack Single Page Application Starter Pack
 
-This is a repo for a starter appliation for a Single Page MEAN Stack application. Just download and install and you have a good foundation for building applications. 
+This is a starter repository for a Single Page MEAN Stack application. Just clone, install the necessary bits and you have the basic foundation for building your MEAN applications. 
+
+## Prerequisites
+### MongoDB
+1. Install MongoDB from here: https://www.mongodb.org/
+2. Launch MongoDB if not already running: `$ mongod --storageEngine wiredTiger --dbpath /data/db/`
+3. Check that it works: 
+    ```
+    $ mongo
+    MongoDB shell version: 3.0.0
+    connecting to: test
+    > 
+    ```
+
+### NodeJS
+1. Install NodeJS from here: https://nodejs.org/
+2. Check that it works:
+    ```
+    $ node --version; node -p 3+4
+    v5.1.0
+    7
+    ```
 
 ## Installation
-1. Download the repository
+1. Download this repository: `git clone https://github.com/jewkesy/meanMovies.git .`
 2. Install npm modules: `npm install`
 3. Install bower: `npm install bower -g`
-4. Install bower dependencies `bower install`
+4. Install bower dependencies `$ bower install`
 5. Install nodemon: `npm install nodemon -g`
-6. Start up the server: `nodemon` or `node server.js`
-7. View in browser at http://localhost:8080
 
-Ensure MongoDB is running and you have a database matching ./config/db/url
+## Running Things
+1. Ensure you have MongoDB installed and running.  Db configuration is here:  `$ ./config/db.url`
+2. Import a sample dataset: `$ mongoimport --db movies --collection movies --file movies.json --jsonArray  --drop`
+3. Start up the server: `nodemon` or `node server.js`
+4. Point your browser at http://localhost:8080
 
-Use this starter kit to build any MEAN stack application you like.  Based upon the initial project by scotch.io
+
+Based upon an initial project by scotch.io

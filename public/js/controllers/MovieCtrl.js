@@ -2,10 +2,9 @@
 
 angular.module('MovieCtrl', []).controller('MovieController', function($scope, Movie) {
 
-	$scope.tagline = 'Nothing beats a pocket protector!';
+	$scope.tagline = 'Hello from MovieController!!';
 
 	Movie.get().success(function (data) {
-		$scope.tagline += ' Text from MovieController!'
 		$scope.movies = data
 	});
 
