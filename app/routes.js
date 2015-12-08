@@ -1,4 +1,5 @@
 var Movie = require('./models/Movie')
+var path = require('path')
 
 module.exports = function(app) {
 
@@ -93,7 +94,8 @@ module.exports = function(app) {
 	// frontend routes =========================================================
 	// route to handle all angular requests
 	app.get('*', function(req, res) {
-		res.sendfile('./public/index.html');
+		res.sendFile(path.join(__dirname, '../public', 'index.html'));
+		// res.sendfile('./public/index.html');
 	});
 
 };
