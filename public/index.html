@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<base href="/">
 
-	<title>Starter Node and Angular</title>
+	<title>MEAN Stack Movies</title>
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
@@ -13,6 +13,7 @@
 	<!-- JS -->
 	<script src="libs/angular/angular.min.js"></script>
 	<script src="libs/angular-route/angular-route.min.js"></script>
+	<script src="libs/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 
 	<!-- ANGULAR CUSTOM -->
 	<script src="js/controllers/MainCtrl.js"></script>
@@ -25,21 +26,44 @@
 </head>
 <body ng-app="sampleApp" ng-controller="NerdController">
 <div class="container">
-	
 	<!-- HEADER -->
-	<nav class="navbar navbar-inverse">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="/">Stencil: Node and Angular</a>
-		</div>
-		<ul class="nav navbar-nav">
-			<li><a href="/nerds">Nerds</a></li>
-			<li><a href="/geeks">Geeks</a></li>
-		</ul>
-	</nav>
+	<header class="navbar navbar-inverse" role="banner">
+      <div class="container container-narrow">
+        <nav role="navigation" ng-controller="HeaderController">
+            <div class="navbar-header container-fluid"><img class="navbar-brand" height="30px" src="./images/logo.png" />
+              <a class="navbar-brand" href="/">MEAN Stack Movies</a>
+              
+              <button type="button" class="navbar-toggle" ng-click="isCollapsed = !isCollapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+            </div>
+
+            <div  class="collapse navbar-collapse bs-js-navbar-collapse" id="topMenu" uib-collapse="isCollapsed">
+              <ul class="nav navbar-nav">
+                <li ng-class="{ active: isActive('/nerds')}"><a href="/nerds">Movies</a></li>
+                <li ng-class="{ active: isActive('/geeks')}"><a href="/geeks">Geeks</a></li>
+              </ul>
+            </div>
+        </nav>
+      </div>
+    </header>
+	
 
 	<!-- ANGULAR DYNAMIC CONTENT -->
 	<div ng-view></div>
 
 </div>
+
 </body>
 </html>
+
+
+
+
+
+
+
