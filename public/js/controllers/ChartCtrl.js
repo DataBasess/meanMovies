@@ -1,12 +1,31 @@
-angular.module('ChartCtrl', []).controller('ChartController', function($scope) {
+angular.module('ChartCtrl', []).controller('ChartController', function($scope, Movie) {
 
-	$scope.tagline = 'We all go a little MEAN sometimes';	
+	$scope.tagline = 'We all go a little MEAN sometimes';
 
-	$scope.labels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-	  $scope.series = ['Series A', 'Series B'];
+	Movie.get().success(function (data) {
 
-	  $scope.data = [
-	    [65, 59, 80, 81, 56, 55, 40],
-	    [28, 48, 40, 19, 86, 27, 90]
-	  ];
+		data.sort(yearSort)
+		$scope.movies = data
+
+		var stats = []
+		$scope.labels = []
+		
+		var movieCount = []
+
+		for (var i = 0; i < data.length; i++) {
+			var movie = data[i]
+			upsertArray(movie.year, movieCount)			
+		}
+
+		var arrData = []
+		for (var i = 0; i < movieCount.length; i++) {
+			$scope.labels.push(movieCount[i].key)
+			arrData.push(movieCount[i].count)
+		}
+
+		$scope.data = [arrData];
+
+		$scope.series = ['Films Per Year']
+
+	});
 });

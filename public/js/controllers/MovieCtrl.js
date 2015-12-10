@@ -5,6 +5,7 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, M
 	$scope.tagline = "That's no moon. It's a space station";
 
 	Movie.get().success(function (data) {
+		data.sort(yearSort)
 		$scope.movies = data
 	});
 
@@ -32,6 +33,7 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, M
 		// console.log('deleting from controller', id)
 		Movie.delete(id).success(function (data) {
 			Movie.get().success(function (movies) {
+				data.sort(yearSort)
 				$scope.movies = movies
 			});
 		});
