@@ -2,7 +2,7 @@ doctype html
 html(lang='en')
 	head
 		meta(charset='UTF-8')
-		meta(name='viewport', content='width=device-width  initial-scale=1')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
 		base(href='/')
 		title MEAN Stack Movies
 
@@ -26,8 +26,8 @@ html(lang='en')
 		script(src='js/controllers/MainCtrl.js')
 		script(src='js/controllers/MovieCtrl.js')
 		script(src='js/services/MovieService.js')
-		script(src='js/controllers/GeekCtrl.js')
-		script(src='js/services/GeekService.js')
+		script(src='js/controllers/AboutCtrl.js')
+		script(src='js/services/AboutService.js')
 		script(src='js/appRoutes.js')
 		script(src='js/app.js')
 
@@ -50,8 +50,8 @@ html(lang='en')
 							ul.nav.navbar-nav
 								li(ng-class="{ active: isActive('/movies')}")
 									a(href='/movies') Movies
-								li(ng-class="{ active: isActive('/geeks')}")
-									a(href='/geeks') Geeks
+								li(ng-class="{ active: isActive('/about')}")
+									a(href='/about') About
 
 			// ANGULAR DYNAMIC CONTENT
 			div(ng-view='')
@@ -63,4 +63,4 @@ html(lang='en')
 					p.text-muted.credit
 					| Created by 
 					a(target='_blank', href='http://www.daryljewkes.com') Daryl Jewkes
-					|  .:. MEAN Stack Skeleton Application
+					|  .:. MEAN Stack Movies

@@ -1,4 +1,4 @@
-angular.module('meanApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'MovieCtrl', 'MovieService', 'GeekCtrl', 'GeekService', 'ui.bootstrap', 'xeditable', 'chart.js'])
+angular.module('meanApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'MovieCtrl', 'MovieService', 'AboutCtrl', 'AboutService', 'ui.bootstrap', 'xeditable', 'chart.js'])
 .controller('HeaderController', function($scope, $location) {
   $scope.isActive = function (viewLocation) {
     return $location.path().indexOf(viewLocation) >= 0;

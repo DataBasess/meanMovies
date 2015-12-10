@@ -18,9 +18,9 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			controller: 'MovieController'
 		})
 
-		.when('/geeks', {
-			templateUrl: 'partials/geek',
-			controller: 'GeekController'	
+		.when('/about', {
+			templateUrl: 'partials/about',
+			controller: 'AboutController'	
 		});
 
 	$locationProvider.html5Mode(true);

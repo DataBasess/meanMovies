@@ -2,7 +2,7 @@
 
 angular.module('MovieCtrl', []).controller('MovieController', function($scope, Movie) {
 
-	$scope.tagline = 'Hello from MovieController!!';
+	$scope.tagline = "That's no moon. It's a space station";
 
 	Movie.get().success(function (data) {
 		$scope.movies = data

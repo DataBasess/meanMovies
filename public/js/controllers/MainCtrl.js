@@ -1,6 +1,6 @@
 angular.module('MainCtrl', []).controller('MainController', function($scope) {
 
-	$scope.tagline = "That's no moon. It's a space station.";	
+	$scope.tagline = 'We all go a little MEAN sometimes';	
 
 	$scope.labels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
 	  $scope.series = ['Series A', 'Series B'];
