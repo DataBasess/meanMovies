@@ -1,0 +1,29 @@
+
+block content
+
+	.jumbotron.text-center
+		h1 Movie List
+		p {{ tagline }}
+		h2 Your Movies
+		div(ng-repeat='movie in movies')
+			form(editable-form='', name='editableForm', onaftersave='saveMovie($data, movie._id)')
+				p.item
+					span.movieYear(movieyear='{{movie.year}}', editable-text='movie.title', e-name='title', onbeforesave='checkTitle($data)', e-required='') {{ movie.title || 'empty' }}
+					span.moveTitle(movetitle='{{movie.title}}', editable-number='movie.year', e-name='year', onbeforesave='checkYear($data)', e-min='1900', e-max='2050', e-required='') {{ movie.year || 'empty' }}
+					span.movieDirector(moviedirector='{{movie.director}}', editable-text='movie.director', e-name='director', onbeforesave='checkDirector($data)', e-required='') {{ movie.director || 'empty' }}
+					// button to show form
+					button.btn.btn-default(type='button', ng-click='editableForm.$show()', ng-show='!editableForm.$visible') Edit
+				div
+					// buttons to submit / cancel form and delete record
+					span(ng-show='editableForm.$visible')
+						button.btn.btn-primary(type='submit', ng-disabled='editableForm.$waiting') Save
+						button.btn.btn-default(type='button', ng-disabled='editableForm.$waiting', ng-click='editableForm.$cancel()') Cancel
+						button.btn.btn-danger(type='button', ng-disabled='editableForm.$waiting', ng-click='delMovie(movie._id)') Delete
+		hr
+		h3 Add New Movie
+		div
+			form(name='inputForm', ng-submit='createMovie(inputForm.$valid)')
+				input(placeholder='Title', ng-model='newMovieTitle', required='')
+				input(placeholder='Year', type='number', min='1900', max='2050', ng-model='newMovieYear', required='')
+				input(placeholder='Director', ng-model='newMovieDirector', required='')
+				button.btn.btn-primary(type='submit', ng-disabled='inputForm.$invalid') Save

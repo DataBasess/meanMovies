@@ -48,7 +48,6 @@ module.exports = function(app) {
     		director: req.body.director
     	}
 
-
     	Movie.update({_id: req.body._id}, updateData, function(err, movie) {
     		if (err) {
 	            res.status(500);
@@ -93,9 +92,22 @@ module.exports = function(app) {
 
 	// frontend routes =========================================================
 	// route to handle all angular requests
-	app.get('*', function(req, res) {
-		res.sendFile(path.join(__dirname, '../public', 'index.html'));
-		// res.sendfile('./public/index.html');
+
+	app.all('/*', function(req, res, next) {
+		// console.log(req.url)
+		var arbitraryUrls = ['partials', 'api'];
+		if (arbitraryUrls.indexOf(req.url.split('/')[1]) > -1) {
+			// console.log('going next')
+			next();
+		} else {
+			// console.log('not going next')
+			res.render('layout');
+		}
+	});
+
+	app.get('/partials/*', function(req, res, next) {
+		// console.log('the path', req.path)
+		res.render('.' + req.path);
 	});
 
 };
