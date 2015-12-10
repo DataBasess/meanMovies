@@ -28,6 +28,8 @@ html(lang='en')
 		script(src='js/services/MovieService.js')
 		script(src='js/controllers/AboutCtrl.js')
 		script(src='js/services/AboutService.js')
+		script(src='js/controllers/ChartCtrl.js')
+		script(src='js/services/ChartService.js')
 		script(src='js/appRoutes.js')
 		script(src='js/app.js')
 
@@ -50,6 +52,8 @@ html(lang='en')
 							ul.nav.navbar-nav
 								li(ng-class="{ active: isActive('/movies')}")
 									a(href='/movies') Movies
+								li(ng-class="{ active: isActive('/charts')}")
+									a(href='/charts') Charts
 								li(ng-class="{ active: isActive('/about')}")
 									a(href='/about') About
 

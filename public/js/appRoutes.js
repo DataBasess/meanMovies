@@ -8,9 +8,9 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			controller: 'MainController'
 		})
 
-		.when('/basic', {
-			templateUrl: 'partials/basic',
-			controller: 'MainController'
+		.when('/charts', {
+			templateUrl: 'partials/chart',
+			controller: 'ChartController'
 		})
 
 		.when('/movies', {
