@@ -37,3 +37,8 @@ form[name="editableForm"] .editable {
 form[name="editableForm"] select {
   width: 120px;
 }
+
+p.item > span {
+  padding-left: 3px;
+  padding-right: 3px;
+}
