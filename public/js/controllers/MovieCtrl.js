@@ -55,6 +55,7 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, M
 
     	Movie.update(data).success(function (movie) {
     		Movie.get().success(function (movies) {
+    			movies.sort(yearSort)
 				$scope.movies = movies
 			});
     	});
