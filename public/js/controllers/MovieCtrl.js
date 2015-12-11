@@ -33,7 +33,7 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, M
 		// console.log('deleting from controller', id)
 		Movie.delete(id).success(function (data) {
 			Movie.get().success(function (movies) {
-				data.sort(yearSort)
+				movies.sort(yearSort)
 				$scope.movies = movies
 			});
 		});
