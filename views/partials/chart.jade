@@ -1,4 +1,9 @@
 .jumbotron.text-center
 	h1 Dynamic & Responsive Charts
 		p "{{ tagline }}"
-canvas#bar.chart.chart-bar(chart-data='data', chart-labels='labels', chart-series="series")
+.row
+	h2 Movies Per Year
+	p A responsive chart showing the number of movies per year in your dataset
+
+.row
+	canvas#bar.chart.chart-bar(chart-data='data', chart-labels='labels', chart-series="series")

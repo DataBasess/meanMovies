@@ -5,25 +5,38 @@ angular.module('ChartCtrl', []).controller('ChartController', function($scope, M
 	Movie.get().success(function (data) {
 
 		data.sort(yearSort)
-		$scope.movies = data
+		// $scope.movies = data
 
-		var stats = []
-		$scope.labels = []
-		
+		var min = data[0].year;
+		var max = data[data.length-1].year;
+
+		// console.log(min, max)
 		var movieCount = []
+		var labels = []
+		while (min <= max) {
+			labels.push(min); 
+			movieCount.push({
+				key: min,
+				count: 0
+			})
+			min++;
+		}
+		// console.log(labels)
+		// console.log(movieCount)
 
 		for (var i = 0; i < data.length; i++) {
 			var movie = data[i]
-			upsertArray(movie.year, movieCount)			
+			upsertArray(movie.year, movieCount)
 		}
-
-		var arrData = []
+		// console.log(movieCount)
+		var chartData = []
 		for (var i = 0; i < movieCount.length; i++) {
-			$scope.labels.push(movieCount[i].key)
-			arrData.push(movieCount[i].count)
+			// labels.push(movieCount[i].key)
+			chartData.push(movieCount[i].count)
 		}
 
-		$scope.data = [arrData];
+		$scope.labels = labels
+		$scope.data = [chartData];
 
 		$scope.series = ['Films Per Year']
 

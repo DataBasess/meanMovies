@@ -24,6 +24,7 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, M
 			// console.log('successful save', data)
 			$scope.newMovieTitle = $scope.newMovieYear = $scope.newMovieDirector =''
 			Movie.get().success(function (movies) {
+				movies.sort(yearSort)
 				$scope.movies = movies
 			});
 		});
