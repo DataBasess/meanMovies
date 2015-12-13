@@ -3,27 +3,27 @@
 	p "{{ tagline }}"
 h2 Your Movies
 
+
 table.table.table-striped.table-bordered
 	tr
-		th Movie Details
+		th Title
+		th Year
+		th Director
 		th Actions
 	tr(ng-repeat='movie in movies')
 		td
-			form(editable-form='', name='editableForm', onaftersave='saveMovie($data, movie._id)')
-				p.item
-					span.movieTitle(movetitle='{{movie.title}}', editable-text='movie.title', e-name='title', onbeforesave='checkTitle($data)', e-required='') {{ movie.title || 'empty' }}
-					span.movieYear(movieyear='{{movie.year}}', editable-number='movie.year', e-name='year', onbeforesave='checkYear($data)', e-min='1900', e-max='2050', e-required='') {{ movie.year || 'empty' }}
-					span.movieDirector(moviedirector='{{movie.director}}', editable-text='movie.director', e-name='director', onbeforesave='checkDirector($data)', e-required='') {{ movie.director || 'empty' }}
-					span(ng-show='editableForm.$visible')
-						button.btn.btn-primary(type='submit', ng-disabled='editableForm.$waiting', ng-click='saveMovie(movie._id)') Save
-						button.btn.btn-danger(type='button', ng-disabled='editableForm.$waiting', ng-click='delMovie(movie._id)') Delete
+			span.movieTitle(movetitle='{{movie.title}}', editable-text='movie.title', e-name='title', e-form='rowform', onbeforesave='checkTitle($data)', e-required='') {{ movie.title || 'empty' }}
 		td
-					// button to show form
-					button.btn.btn-default(type='button', ng-click='editableForm.$show()', ng-show='!editableForm.$visible') Edit
-					// buttons to submit / cancel form and delete record
-					span(ng-show='editableForm.$visible')
-						button.btn.btn-default(type='button', ng-disabled='editableForm.$waiting', ng-click='editableForm.$cancel()') Cancel
-						
+			span.movieYear(movieyear='{{movie.year}}', editable-number='movie.year', e-name='year', e-form='rowform', onbeforesave='checkYear($data)', e-min='1900', e-max='2050', e-required='') {{ movie.year || 'empty' }}
+		td
+			span.movieDirector(moviedirector='{{movie.director}}', editable-text='movie.director', e-form='rowform', e-name='director', onbeforesave='checkDirector($data)', e-required='') {{ movie.director || 'empty' }}
+		td
+			button.btn.btn-default(type='button', ng-click='rowform.$show()', ng-show='!rowform.$visible') Edit
+			button.btn.btn-danger(type='button', ng-disabled='rowform.$waiting', ng-show='!rowform.$visible' ng-click='delMovie(movie._id)') Delete
+
+			form(editable-form='', name='rowform', ng-show='rowform.$visible', onbeforesave='saveMovie($data, movie._id)')
+				button.btn.btn-primary(type='submit', ng-disabled='editableForm.$waiting') Save
+				button.btn.btn-default(type='button', ng-disabled='editableForm.$waiting', ng-click='rowform.$cancel()') Cancel						
 hr
 h3 Add New Movie
 div.row
