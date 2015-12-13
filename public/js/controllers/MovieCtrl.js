@@ -41,12 +41,15 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, M
 	}
 
 	$scope.checkTitle = function(data) {
+		if (!data) return "Title is required"
     	// return "something";
 	}
 	$scope.checkYear = function(data) {
+		if (!data) return "Year is required"
     	// return "yyyy"
 	}
 	$scope.checkDirector = function(data) {
+		if (!data) return "Director is required"
     	// return "err"
 	}
 
