@@ -43,6 +43,11 @@ p.item > span {
   padding-right: 3px;
 }
 
+.btn {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
 .movieTitle {
 
 }
@@ -53,4 +58,9 @@ p.item > span {
 
 .movieDirector {
 
+}
+
+.form-group > label, input {
+  margin-left: 4px;
+  margin-right: 4px;
 }

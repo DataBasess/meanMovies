@@ -19,7 +19,7 @@ table.table.table-striped.table-bordered
 			span.movieDirector(moviedirector='{{movie.director}}', editable-text='movie.director', e-form='rowform', e-name='director', onbeforesave='checkDirector($data)', e-required='') {{ movie.director || 'empty' }}
 		td
 			button.btn.btn-default(type='button', ng-click='rowform.$show()', ng-show='!rowform.$visible') Edit
-			button.btn.btn-danger(type='button', ng-disabled='rowform.$waiting', ng-show='!rowform.$visible' ng-click='delMovie(movie._id)') Delete
+			button.btn.btn-danger(type='button', ng-disabled='rowform.$waiting', ng-show='!rowform.$visible', ng-click="delMovie(movie._id)") Delete
 
 			form(editable-form='', name='rowform', ng-show='rowform.$visible', onbeforesave='saveMovie($data, movie._id)')
 				button.btn.btn-primary(type='submit', ng-disabled='editableForm.$waiting') Save
@@ -27,8 +27,12 @@ table.table.table-striped.table-bordered
 hr
 h3 Add New Movie
 div.row
-	form(name='inputForm', ng-submit='createMovie(inputForm.$valid)')
-		input(placeholder='Title', ng-model='newMovieTitle', required='')
-		input(placeholder='Year', type='number', min='1900', max='2050', ng-model='newMovieYear', required='')
-		input(placeholder='Director', ng-model='newMovieDirector', required='')
-		button.btn.btn-primary(type='submit', ng-disabled='inputForm.$invalid') Save
+	form.form-inline(name='inputForm', ng-submit='createMovie(inputForm.$valid)')
+		div.form-group
+			label(for="movieTitle") Title
+			input(id="movieTitle", placeholder='Title', ng-model='newMovieTitle', required='')
+			label(for="movieYear") Year
+			input(id="movieYear", placeholder='Year', type='number', min='1900', max='2050', ng-model='newMovieYear', required='')
+			label(for="movieDirector") Director
+			input(id="movieDirector", placeholder='Director', ng-model='newMovieDirector', required='')
+			button.btn.btn-primary(type='submit', ng-disabled='inputForm.$invalid') Save

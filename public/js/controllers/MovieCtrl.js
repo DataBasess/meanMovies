@@ -40,6 +40,13 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, M
 		});
 	}
 
+	$scope.showDelConf = function() {
+		$scope.isDeleting = true;
+	}
+	$scope.hideDelConf = function() {
+		$scope.isDeleting = false;
+	}
+
 	$scope.checkTitle = function(data) {
 		if (!data) return "Title is required"
     	// return "something";
