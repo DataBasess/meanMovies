@@ -12,7 +12,17 @@ var path           = require('path');
 var db = require('./config/db');
 
 var port = process.env.PORT || 8080; // set our port
-mongoose.connect(db.url); // connect to our mongoDB database (commented out after you enter in your own credentials)
+mongoose.connect(db.url, function (err) {
+	if (err) throw err
+}); // connect to our mongoDB database (commented out after you enter in your own credentials)
+
+// If the Node process ends, close the Mongoose connection 
+process.on('SIGINT', function() {  
+  mongoose.connection.close(function () { 
+    console.log('Mongoose default connection disconnected through app termination'); 
+    process.exit(0); 
+  }); 
+}); 
 
 // get all data/stuff of the body (POST) parameters
 app.use(bodyParser.json()); // parse application/json 
