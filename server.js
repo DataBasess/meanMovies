@@ -13,7 +13,7 @@ var db = require('./config/db');
 
 var port = process.env.PORT || 8080; // set our port
 mongoose.connect(db.url, function (err) {
-	if (err) throw err
+	if (err) console.log(err)
 }); // connect to our mongoDB database (commented out after you enter in your own credentials)
 
 // If the Node process ends, close the Mongoose connection 
