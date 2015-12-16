@@ -8,7 +8,7 @@ module.exports = function(app) {
 
 
 	app.get('/api/movies', function (req, res) {
-        //use mongoose to get all nerds from the database
+        //use mongoose to get all movies from the database
         Movie.find(function(err, movies){
             if(err){
                 res.send(err);
@@ -41,11 +41,13 @@ module.exports = function(app) {
     });
 
     app.put('/api/movies/:id', function (req, res) {
-    	
+    	// console.log(req.body)
     	var updateData = { // this way protects the data
     		title: req.body.title,
     		year: req.body.year,
-    		director: req.body.director
+    		director: req.body.director,
+    		watched: req.body.watched,
+    		rating: req.body.rating
     	}
 
     	Movie.update({_id: req.body._id}, updateData, function(err, movie) {

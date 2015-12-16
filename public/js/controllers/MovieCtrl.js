@@ -61,10 +61,11 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, M
 	}
 
 	$scope.saveMovie = function(data, id) {
-    	// console.log('saving...', data, id)
+    	
     	angular.extend(data, {_id: id});
-
-    	Movie.update(data).success(function (movie) {
+		// console.log(data)
+    	Movie.update(data).success(function (result) {
+    		// console.log(result)
     		Movie.get().success(function (movies) {
     			movies.sort(yearSort)
 				$scope.movies = movies

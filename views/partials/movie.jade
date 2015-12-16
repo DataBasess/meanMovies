@@ -9,6 +9,8 @@ table.table.table-striped.table-bordered
 		th Title
 		th Year
 		th Director
+		th Watched
+		th Rating
 		th Actions
 	tr(ng-repeat='movie in movies')
 		td
@@ -17,6 +19,10 @@ table.table.table-striped.table-bordered
 			span.movieYear(movieyear='{{movie.year}}', editable-number='movie.year', e-name='year', e-form='rowform', onbeforesave='checkYear($data)', e-min='1900', e-max='2050', e-required='') {{ movie.year || 'empty' }}
 		td
 			span.movieDirector(moviedirector='{{movie.director}}', editable-text='movie.director', e-form='rowform', e-name='director', onbeforesave='checkDirector($data)', e-required='') {{ movie.director || 'empty' }}
+		td
+			span.movieWatched(moviewatched='{{movie.watched}}', editable-checkbox='movie.watched', e-form='rowform', e-name='watched') {{ movie.watched && 'Watched' || 'Not watched' }}
+		td
+			span.movieRating(movierating='{{movie.rating}}', editable-number='movie.rating', e-form='rowform', e-name='rating', e-required='', e-min='1', e-max='5') {{ movie.rating || 'empty' }}
 		td
 			button.btn.btn-default(type='button', ng-click='rowform.$show()', ng-show='!rowform.$visible') Edit
 			button.btn.btn-danger(type='button', ng-disabled='rowform.$waiting', ng-show='!rowform.$visible', ng-click="delMovie(movie._id)") Delete
