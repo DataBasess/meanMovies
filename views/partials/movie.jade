@@ -22,7 +22,7 @@ table.table.table-striped.table-bordered
 		td
 			span.movieWatched(moviewatched='{{movie.watched}}', editable-checkbox='movie.watched', e-form='rowform', e-name='watched') {{ movie.watched && 'Watched' || 'Not watched' }}
 		td
-			span.movieRating(movierating='{{movie.rating}}', editable-number='movie.rating', e-form='rowform', e-name='rating', e-required='', e-min='1', e-max='5') {{ movie.rating || 'empty' }}
+			span.movieRating.rating(movierating='{{movie.rating}}', editable-number='movie.rating', e-form='rowform', e-name='rating', e-required='', e-min='1', e-max='5') {{ movie.rating || 'empty' }}
 		td
 			button.btn.btn-default(type='button', ng-click='rowform.$show()', ng-show='!rowform.$visible') Edit
 			button.btn.btn-danger(type='button', ng-disabled='rowform.$waiting', ng-show='!rowform.$visible', ng-click="delMovie(movie._id)") Delete

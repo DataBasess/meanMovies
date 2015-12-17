@@ -9,6 +9,6 @@ module.exports = mongoose.model('Movie', {
 	title : {type : String, default: ''},
 	year : {type : Number },
 	director : {type : String, default: ''},
-	watched : {type : Boolean},
+	watched : {type : Boolean, default: false},
 	rating : {type : Number, default: 0}
 }, 'movies');

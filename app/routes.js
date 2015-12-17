@@ -19,7 +19,13 @@ module.exports = function(app) {
     });
 
     app.post('/api/movies', function (req, res) {
-    	var newMovie = new Movie(req.body)
+    	var newData = { // this way protects the data
+    		title: req.body.title,
+    		year: req.body.year,
+    		director: req.body.director
+    	}
+    	console.log(newData)
+    	var newMovie = new Movie(newData)
     	newMovie.save(function (err, newMovie) {
 
 			if (err) {
