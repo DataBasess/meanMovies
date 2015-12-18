@@ -3,7 +3,13 @@
 		p "{{ tagline }}"
 .row
 	h2 Movies Per Year
-	p A responsive chart showing the number of movies per year in your dataset
-
+	p A responsive bar chart showing the number of movies per year in your dataset
+	canvas#byYear.chart.chart-xs.chart-bar(chart-data='yearData', chart-labels='yearLabels', chart-series='yearSeries', chart-legend=true)
 .row
-	canvas#bar.chart.chart-bar(chart-data='data', chart-labels='labels', chart-series="series")
+	h2 Movies By Rating
+	p A responsive radar chart showing the ratings of movies in your dataset
+	canvas#byRating.chart.chart-xs.chart-radar(chart-data='ratingsData', chart-labels='ratingsLabels', chart-legend=false)
+.row
+	h2 Movies Watched
+	p A responsive pie chart showing the which of your movies you have seen in your dataset
+	canvas#byWatched.chart.chart-xs.chart-pie(chart-data='watchedData', chart-labels='watchedLabels', chart-legend=true)
