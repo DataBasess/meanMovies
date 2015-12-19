@@ -11,4 +11,4 @@ module.exports = mongoose.model('Movie', {
 	director : {type : String, default: ''},
 	watched : {type : Boolean, default: false},
 	rating : {type : Number, default: 0}
-}, 'moviesbak');
+}, 'movies');

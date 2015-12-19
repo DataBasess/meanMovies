@@ -24,7 +24,7 @@ module.exports = function(app) {
     		year: req.body.year,
     		director: req.body.director
     	}
-    	console.log(newData)
+    	// console.log(newData)
     	var newMovie = new Movie(newData)
     	newMovie.save(function (err, newMovie) {
 
