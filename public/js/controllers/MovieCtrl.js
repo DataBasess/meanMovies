@@ -13,7 +13,7 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
 		// console.log('creating movie', $scope.newMovieTitle, $scope.newMovieYear, $scope.newMovieDirector)
 
 		var newMovie = {
-			title: $scope.newMovieTitle,
+			title: $scope.newMovieTitle || $scope.asyncSelected,
 			year: +$scope.newMovieYear,
 			director: $scope.newMovieDirector
 		}
