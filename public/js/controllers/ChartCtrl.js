@@ -3,6 +3,7 @@ angular.module('ChartCtrl', []).controller('ChartController', function($scope, M
 	$scope.tagline = 'We all go a little MEAN sometimes';
 
 	Movie.get().success(function (movies) {
+		if (!movies || movies.length==0) return
 		buildYearChart(movies)
 		buildRatingsChart(movies)
 		buildWatchedChart(movies)
