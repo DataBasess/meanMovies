@@ -43,8 +43,9 @@ html(lang='en')
 				.container.container-narrow
 					nav(role='navigation', ng-controller='HeaderController')
 						.navbar-header.container-fluid
-							img.navbar-brand(height='30px', src='./images/logo.png')
-							a.navbar-brand(href='/') MEAN Stack Movies
+							a.navbar-brand(href='/')
+								span.glyphicon.glyphicon-film
+								span  MEAN Stack Movies
 							button.navbar-toggle(type='button', ng-click='isCollapsed = !isCollapsed')
 								span.sr-only Toggle navigation
 								span.icon-bar
