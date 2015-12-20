@@ -91,7 +91,10 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
 		  }
 		}).then(function(response){
 			// console.log(response)
-			if (response.data.Error) return [response.data.Error]
+			if (response.data.Error) {
+				if (response.data.Error.indexOf("Timeout expired") > -1) return
+				return [response.data.Error]
+			}
 			return response.data.Search.map(function(item) {
 				return item.Title + ' | ' + item.Year;
 			})

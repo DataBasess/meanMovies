@@ -13,7 +13,7 @@ h2 Add New Movie
 		form.form-inline(name='inputForm', ng-submit='createMovie(inputForm.$valid)')
 			div.form-group
 				label(for="movieTitle") Title
-				input(id="movieTitle", placeholder='Title', required='', ng-model="newMovieTitle", uib-typeahead="movie for movie in getMovies($viewValue)", typeahead-on-select='onSelect($item, $model, $label)')
+				input(id="movieTitle", placeholder='Title', required='', ng-model="newMovieTitle", uib-typeahead="movie for movie in getMovies($viewValue)", typeahead-on-select='onSelect($item, $model, $label)', typeahead-min-length=2)
 				label(for="movieYear") Year
 				input(id="movieYear", placeholder='Year', type='number', min='1900', max='2050', ng-model='newMovieYear', required='')
 				label(for="movieDirector") Director
