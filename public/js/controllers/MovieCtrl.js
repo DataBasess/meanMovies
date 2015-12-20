@@ -13,14 +13,14 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
 		// console.log('creating movie', $scope.newMovieTitle, $scope.newMovieYear, $scope.newMovieDirector)
 
 		var newMovie = {
-			title: $scope.newMovieTitle || $scope.asyncSelected,
+			title: $scope.newMovieTitle,
 			year: +$scope.newMovieYear,
 			director: $scope.newMovieDirector
 		}
 
 		Movie.create(newMovie).success(function (data) {
 			// console.log('successful save', data)
-			$scope.newMovieTitle = $scope.newMovieYear = $scope.newMovieDirector = $scope.asyncSelected =''
+			$scope.newMovieTitle = $scope.newMovieYear = $scope.newMovieDirector =''
 			Movie.get().success(function (movies) {
 				movies.sort(yearSort)
 				$scope.movies = movies
@@ -74,9 +74,7 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
 	$scope.onSelect = function($item, $model, $label) {
 		// console.log($item)
 		var selected = $item.split(' | ');
-		$scope.asyncSelected = selected[0];
 		$scope.newMovieTitle = selected[0];
-		// $scope.selected = selected[0];
 		$scope.newMovieYear = +selected[1];
 
 		getDirector(selected[0]);
@@ -86,6 +84,7 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
 	
 	// Any function returning a promise object can be used to load values asynchronously
 	$scope.getMovies = function(val) {
+		$scope.queryUrl = 'http://www.omdbapi.com/?r=json&s=' + encodeURIComponent(val) + '*'
 		return $http.get('//www.omdbapi.com/?r=json', {
 		  params: {
 		    s: val + '*'
@@ -98,10 +97,11 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
 			})
 		});
 	};
-	function getDirector (title) {
+	function getDirector (val) {
+		$scope.queryUrl = 'http://www.omdbapi.com/?r=json&t=' + encodeURIComponent(val)
 		return $http.get('//www.omdbapi.com/?r=json', {
 		  params: {
-		    t: title
+		    t: val
 		  }
 		}).then(function(response){
 			// console.log(response.data.Director)
