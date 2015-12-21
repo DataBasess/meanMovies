@@ -2,9 +2,10 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
 
 	$scope.tagline = "That's no moon. It's a space station";
 
-	Movie.get().success(function (data) {
-		data.sort(yearSort)
-		$scope.movies = data
+	Movie.get().success(function (movies) {
+		movies.sort(yearSort)
+		$scope.movieCount = movies.length + ' movies'
+		$scope.movies = movies
 	});
 
 	$scope.createMovie = function (isValid) {
@@ -23,6 +24,7 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
 			$scope.newMovieTitle = $scope.newMovieYear = $scope.newMovieDirector =''
 			Movie.get().success(function (movies) {
 				movies.sort(yearSort)
+				$scope.movieCount = movies.length + ' movies'
 				$scope.movies = movies
 			});
 		});
@@ -33,6 +35,7 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
 		Movie.delete(id).success(function (data) {
 			Movie.get().success(function (movies) {
 				movies.sort(yearSort)
+				$scope.movieCount = movies.length + ' movies'
 				$scope.movies = movies
 			});
 		});
@@ -66,6 +69,7 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
     	Movie.update(data).success(function (result) {
     		Movie.get().success(function (movies) {
     			movies.sort(yearSort)
+    			$scope.movieCount = movies.length + ' movies'
 				$scope.movies = movies
 			});
     	});
