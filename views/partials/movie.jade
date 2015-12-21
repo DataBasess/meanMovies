@@ -21,35 +21,36 @@ h2 Add New Movie
 				button.btn.btn-primary(type='submit', ng-disabled='inputForm.$invalid') Save
 	.panel-body 
 		p The first query performs a wildcard search for movies as you type.  
-		p The second query obtains the director for your selected movie title.
+		p The second query obtains the <i><strong>director</strong></i> for your selected movie title.
 	.panel-footer
 		span.glyphicon.glyphicon-exclamation-sign(aria-hidden="true")
 		span  {{queryUrl || ' Type something in the Title field above'}}
 hr
 h2 Your Movies
-table.table.table-striped.table-bordered
-	tr
-		th Title
-		th Year
-		th Director
-		th Watched
-		th Rating
-		th Actions
-	tr(ng-repeat='movie in movies')
-		td
-			span.movieTitle(movetitle='{{movie.title}}', editable-text='movie.title', e-name='title', e-form='rowform', onbeforesave='checkTitle($data)', e-required='') {{ movie.title || 'empty' }}
-		td
-			span.movieYear(movieyear='{{movie.year}}', editable-number='movie.year', e-name='year', e-form='rowform', onbeforesave='checkYear($data)', e-min='1900', e-max='2050', e-required='') {{ movie.year || 'empty' }}
-		td
-			span.movieDirector(moviedirector='{{movie.director}}', editable-text='movie.director', e-form='rowform', e-name='director', onbeforesave='checkDirector($data)', e-required='') {{ movie.director || 'empty' }}
-		td
-			span.movieWatched(moviewatched='{{movie.watched}}', editable-checkbox='movie.watched', e-form='rowform', e-name='watched') {{ movie.watched && 'Watched' || 'Not Watched' }}
-		td
-			span.movieRating.rating(movierating='{{movie.rating}}', editable-number='movie.rating', e-form='rowform', e-name='rating', e-required='', e-min='1', e-max='5') {{ movie.rating || 'Not Yet Rated' }}
-		td
-			button.btn.btn-default(type='button', ng-click='rowform.$show()', ng-show='!rowform.$visible') Edit
-			button.btn.btn-danger(type='button', ng-disabled='rowform.$waiting', ng-show='!rowform.$visible', ng-click="delMovie(movie._id)") Delete
+.row
+	table.table.table-striped.table-bordered.table-condensed
+		tr
+			th Title
+			th Year
+			th Director
+			th Watched
+			th Rating
+			th Actions
+		tr(ng-repeat='movie in movies')
+			td
+				span.movieTitle(movetitle='{{movie.title}}', editable-text='movie.title', e-name='title', e-form='rowform', onbeforesave='checkTitle($data)', e-required='') {{ movie.title || 'empty' }}
+			td
+				span.movieYear(movieyear='{{movie.year}}', editable-number='movie.year', e-name='year', e-form='rowform', onbeforesave='checkYear($data)', e-min='1900', e-max='2050', e-required='') {{ movie.year || 'empty' }}
+			td
+				span.movieDirector(moviedirector='{{movie.director}}', editable-text='movie.director', e-form='rowform', e-name='director', onbeforesave='checkDirector($data)', e-required='') {{ movie.director || 'empty' }}
+			td
+				span.movieWatched(moviewatched='{{movie.watched}}', editable-checkbox='movie.watched', e-form='rowform', e-name='watched') {{ movie.watched && 'Watched' || 'Not Watched' }}
+			td
+				span.movieRating.rating(movierating='{{movie.rating}}', editable-number='movie.rating', e-form='rowform', e-name='rating', e-required='', e-min='1', e-max='5') {{ movie.rating || 'Not Yet Rated' }}
+			td
+				button.btn.btn-default(type='button', ng-click='rowform.$show()', ng-show='!rowform.$visible') Edit
+				button.btn.btn-danger(type='button', ng-disabled='rowform.$waiting', ng-show='!rowform.$visible', ng-click="delMovie(movie._id)") Delete
 
-			form(editable-form='', name='rowform', ng-show='rowform.$visible', onbeforesave='saveMovie($data, movie._id)')
-				button.btn.btn-primary(type='submit', ng-disabled='editableForm.$waiting') Save
-				button.btn.btn-default(type='button', ng-disabled='editableForm.$waiting', ng-click='rowform.$cancel()') Cancel
+				form(editable-form='', name='rowform', ng-show='rowform.$visible', onbeforesave='saveMovie($data, movie._id)')
+					button.btn.btn-primary(type='submit', ng-disabled='editableForm.$waiting') Save
+					button.btn.btn-default(type='button', ng-disabled='editableForm.$waiting', ng-click='rowform.$cancel()') Cancel
