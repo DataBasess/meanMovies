@@ -84,13 +84,15 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
 	
 	// Any function returning a promise object can be used to load values asynchronously
 	$scope.getMovies = function(val) {
-		$scope.queryUrl = 'http://www.omdbapi.com/?r=json&s=' + encodeURIComponent(val) + '*'
-		return $http.get('//www.omdbapi.com/?r=json', {
+		$scope.queryUrl = 'http://www.omdbapi.com/?type=movie&r=json&s=' + encodeURIComponent(val) + '*'
+		return $http.get('//www.omdbapi.com/', {
 		  params: {
+		  	type: 'movie',
+		  	r: 'json',
 		    s: val + '*'
 		  }
 		}).then(function(response){
-			// console.log(response)
+			console.log(response)
 			if (response.data.Error) {
 				if (response.data.Error.indexOf("Timeout expired") > -1) return
 				return [response.data.Error]
@@ -104,6 +106,7 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
 		$scope.queryUrl = 'http://www.omdbapi.com/?r=json&t=' + encodeURIComponent(val)
 		return $http.get('//www.omdbapi.com/?r=json', {
 		  params: {
+		  	r: 'json',
 		    t: val
 		  }
 		}).then(function(response){
