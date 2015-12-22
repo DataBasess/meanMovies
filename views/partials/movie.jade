@@ -42,15 +42,15 @@ h2 Your Movies <small>{{movieCount}}</small>
 			th Actions
 		tr(ng-repeat='movie in movies')
 			td
-				span.movieTitle(movetitle='{{movie.title}}', editable-text='movie.title', e-name='title', e-form='rowform', onbeforesave='checkTitle($data)', e-required='') {{ movie.title || 'empty' }}
+				span.movieTitle(movetitle='{{movie.title}}', editable-text='movie.title', e-name='title', e-form='rowform', onbeforesave='checkTitle($data)', e-required) {{ movie.title || 'empty' }}
 			td
-				span.movieYear(movieyear='{{movie.year}}', editable-number='movie.year', e-name='year', e-form='rowform', onbeforesave='checkYear($data)', e-min='1900', e-max='2050', e-required='') {{ movie.year || 'empty' }}
+				span.movieYear(movieyear='{{movie.year}}', editable-number='movie.year', e-name='year', e-form='rowform', onbeforesave='checkYear($data)', e-min='1900', e-max='2050', e-required) {{ movie.year || 'empty' }}
 			td
-				span.movieDirector(moviedirector='{{movie.director}}', editable-text='movie.director', e-form='rowform', e-name='director', onbeforesave='checkDirector($data)', e-required='') {{ movie.director || 'empty' }}
+				span.movieDirector(moviedirector='{{movie.director}}', editable-text='movie.director', e-form='rowform', e-name='director', onbeforesave='checkDirector($data)', e-required) {{ movie.director || 'empty' }}
 			td
-				span.movieWatched(moviewatched='{{movie.watched}}', editable-checkbox='movie.watched', e-form='rowform', e-name='watched') {{ movie.watched && 'Watched' || 'Not Watched' }}
+				span.movieWatched(moviewatched='{{movie.watched}}', e-ng-change='toggleRating(this, movie)', editable-checkbox='movie.watched', e-form='rowform', e-name='watched') {{ movie.watched && 'Watched' || 'Not Watched' }}
 			td
-				span.movieRating.rating(movierating='{{movie.rating}}', editable-number='movie.rating', e-form='rowform', e-name='rating', e-required='', e-min='1', e-max='5') {{ movie.rating || 'Not Yet Rated' }}
+				span.movieRating.rating(movierating='{{movie.rating}}', e-ng-disabled='!movie.watched', editable-number='movie.rating', e-form='rowform', e-name='rating', e-min='0', e-max='5') {{ movie.rating || 'Not Yet Rated' }}
 			td
 				button.btn.btn-default(type='button', ng-click='rowform.$show()', ng-show='!rowform.$visible') Edit
 				button.btn.btn-danger(type='button', ng-disabled='rowform.$waiting', ng-show='!rowform.$visible', ng-click="delMovie(movie._id)") Delete

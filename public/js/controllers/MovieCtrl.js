@@ -2,11 +2,7 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
 
 	$scope.tagline = "That's no moon. It's a space station";
 
-	Movie.get().success(function (movies) {
-		movies.sort(yearSort)
-		$scope.movieCount = movies.length + ' movies'
-		$scope.movies = movies
-	});
+	grabMovies();
 
 	$scope.createMovie = function (isValid) {
 		if (!isValid) return;
@@ -22,22 +18,14 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
 		Movie.create(newMovie).success(function (data) {
 			// console.log('successful save', data)
 			$scope.newMovieTitle = $scope.newMovieYear = $scope.newMovieDirector =''
-			Movie.get().success(function (movies) {
-				movies.sort(yearSort)
-				$scope.movieCount = movies.length + ' movies'
-				$scope.movies = movies
-			});
+			grabMovies();
 		});
 	}
 
 	$scope.delMovie = function (id) {
 		// console.log('deleting from controller', id)
 		Movie.delete(id).success(function (data) {
-			Movie.get().success(function (movies) {
-				movies.sort(yearSort)
-				$scope.movieCount = movies.length + ' movies'
-				$scope.movies = movies
-			});
+			grabMovies();
 		});
 	}
 
@@ -62,16 +50,18 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
     	// return "err"
 	}
 
+	$scope.toggleRating = function(self, movie) {
+		// console.log(self)
+	    movie.watched = self.$data;
+	  };
+
 	$scope.saveMovie = function(data, id) {
     	
     	angular.extend(data, {_id: id});
+    	if (!data.watched) data.rating = 0;
 		// console.log(data)
     	Movie.update(data).success(function (result) {
-    		Movie.get().success(function (movies) {
-    			movies.sort(yearSort)
-    			$scope.movieCount = movies.length + ' movies'
-				$scope.movies = movies
-			});
+    		grabMovies();
     	});
 	 }
 
@@ -121,4 +111,12 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
 
 		});
 	};
+
+	function grabMovies() {
+		Movie.get().success(function (movies) {
+			movies.sort(yearSort)
+			$scope.movieCount = movies.length + ' movies'
+			$scope.movies = movies
+		});
+	}
 });
