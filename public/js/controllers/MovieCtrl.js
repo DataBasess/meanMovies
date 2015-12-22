@@ -17,7 +17,10 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
 
 		Movie.create(newMovie).success(function (data) {
 			// console.log('successful save', data)
+			$scope.saveSuccess = true;
+			$scope.msgText = "'" + $scope.newMovieTitle + "' sucessfully saved!";
 			$scope.newMovieTitle = $scope.newMovieYear = $scope.newMovieDirector =''
+
 			grabMovies();
 		});
 	}

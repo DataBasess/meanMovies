@@ -23,7 +23,9 @@ h2 Add New Movie
 				label(for="movieDirector") Director
 				input(id="movieDirector", placeholder='Director', ng-model='newMovieDirector', required='')
 				button.btn.btn-primary(type='submit', ng-disabled='inputForm.$invalid') Save
-	.panel-body 
+	.panel-body 	
+		.alert.alert-success.ng-hide(ng-show="saveSuccess") {{msgText}}
+	.panel-body
 		p The first query performs a wildcard search for movies as you type.  
 		p The second query obtains the <i><strong>director</strong></i> for your selected movie title.
 	.panel-footer
