@@ -15,20 +15,18 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
 			director: $scope.newMovieDirector
 		}
 
-		Movie.create(newMovie).error(function(err) {
-			$scope.saveError = true;
-
-			$scope.msgText = "Save Error!! " + err.error.errmsg
-			// $scope.msgText = "'" + $scope.newMovieTitle + "' sucessfully saved!";
-
-		}).success(function (data) {
-			// console.log('successful save', data)
+		Movie.create(newMovie).then(function successCallback(response) {
+			// console.log('success')
 			$scope.saveSuccess = true;
 			$scope.msgText = "'" + $scope.newMovieTitle + "' sucessfully saved!";
-			$scope.newMovieTitle = $scope.newMovieYear = $scope.newMovieDirector =''
-
+			$scope.newMovieTitle = $scope.newMovieYear = $scope.newMovieDirector ='';
 			grabMovies();
-		});
+		}, function errorCallback(response) {
+			// console.log('error')
+			// console.log(response)
+			$scope.saveError = true;
+			$scope.msgText = "Save Error!! " + response.data.error.errmsg
+		})
 	}
 
 	$scope.delMovie = function (id) {
