@@ -51,10 +51,11 @@ h2 Your Movies <small>{{movieCount}}</small>
 				span.movieWatched(moviewatched='{{movie.watched}}', e-ng-change='toggleRating(this, movie)', editable-checkbox='movie.watched', e-form='rowform', e-name='watched') {{ movie.watched && 'Watched' || 'Not Watched' }}
 			td
 				span.movieRating.rating(movierating='{{movie.rating}}', e-ng-disabled='!movie.watched', editable-number='movie.rating', e-form='rowform', e-name='rating', e-min='0', e-max='5') {{ movie.rating || 'Not Yet Rated' }}
-			td
-				button.btn.btn-default(type='button', ng-click='rowform.$show()', ng-show='!rowform.$visible') Edit
-				button.btn.btn-danger(type='button', ng-disabled='rowform.$waiting', ng-show='!rowform.$visible', ng-click="delMovie(movie._id)") Delete
+			td.text-center
+				button.btn.btn-block.btn-default(type='button', ng-click='rowform.$show()', ng-show='!rowform.$visible') Edit
+				
 
 				form(editable-form='', name='rowform', ng-show='rowform.$visible', onbeforesave='saveMovie($data, movie._id)')
-					button.btn.btn-primary(type='submit', ng-disabled='editableForm.$waiting') Save
-					button.btn.btn-default(type='button', ng-disabled='editableForm.$waiting', ng-click='rowform.$cancel()') Cancel
+					button.btn.btn-block.btn-primary(type='submit', ng-disabled='editableForm.$waiting') Save
+					button.btn.btn-block.btn-default(type='button', ng-disabled='editableForm.$waiting', ng-click='rowform.$cancel()') Cancel
+					button.btn.btn-block.btn-danger(type='button', ng-disabled='editableForm.$waiting', ng-click="delMovie(movie._id)") Delete
