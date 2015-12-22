@@ -86,7 +86,7 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
 		    s: val + '*'
 		  }
 		}).then(function(response){
-			console.log(response)
+			// console.log(response)
 			if (response.data.Error) {
 				if (response.data.Error.indexOf("Timeout expired") > -1) return
 				return [response.data.Error]
