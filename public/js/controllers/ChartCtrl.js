@@ -1,6 +1,6 @@
 angular.module('ChartCtrl', []).controller('ChartController', function($scope, Movie) {
 
-	$scope.tagline = 'We all go a little MEAN sometimes';
+	$scope.tagline = "That's no moon. It's a space station";
 
 	Movie.get().success(function (movies) {
 		if (!movies || movies.length==0) return

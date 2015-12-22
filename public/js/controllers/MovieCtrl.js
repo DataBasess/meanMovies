@@ -1,6 +1,6 @@
 angular.module('MovieCtrl', []).controller('MovieController', function($scope, $http, Movie) {
 
-	$scope.tagline = "That's no moon. It's a space station";
+	$scope.tagline = "Go ahead, make my day";
 
 	grabMovies();
 
