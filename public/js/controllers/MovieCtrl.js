@@ -15,7 +15,13 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
 			director: $scope.newMovieDirector
 		}
 
-		Movie.create(newMovie).success(function (data) {
+		Movie.create(newMovie).error(function(err) {
+			$scope.saveError = true;
+
+			$scope.msgText = "Save Error!! " + err.error.errmsg
+			// $scope.msgText = "'" + $scope.newMovieTitle + "' sucessfully saved!";
+
+		}).success(function (data) {
 			// console.log('successful save', data)
 			$scope.saveSuccess = true;
 			$scope.msgText = "'" + $scope.newMovieTitle + "' sucessfully saved!";
