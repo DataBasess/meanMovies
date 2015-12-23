@@ -9,7 +9,7 @@ module.exports = function(app) {
 
 	app.get('/api/movies', function (req, res) {
         //use mongoose to get all movies from the database
-        Movie.find(function(err, movies){
+        Movie.find().sort({year: 1}).exec( function(err, movies){
             if(err){
                 res.send(err);
             }else{

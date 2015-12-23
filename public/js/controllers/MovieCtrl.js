@@ -123,7 +123,7 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
 
 	function grabMovies() {
 		Movie.get().success(function (movies) {
-			movies.sort(yearSort)
+			// movies.sort(yearSort)
 			$scope.movieCount = movies.length + ' movies'
 			$scope.movies = movies
 		});
