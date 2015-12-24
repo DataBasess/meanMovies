@@ -37,12 +37,12 @@ h2 Your Movies <small>{{movieCount}}</small>
 .row
 	table.table.table-striped.table-bordered.table-condensed
 		tr
-			th Title
-			th Year
-			th Director
-			th Watched
-			th Rating
-			th Actions
+			th.text-center Title
+			th.text-center Year
+			th.text-center Director
+			th.text-center Watched
+			th.text-center Rating
+			th.text-center Actions
 		tr(ng-repeat='movie in movies')
 			td
 				span.movieTitle(movetitle='{{movie.title}}', editable-text='movie.title', e-name='title', e-form='rowform', onbeforesave='checkTitle($data)', e-required) {{ movie.title || 'empty' }}
@@ -50,10 +50,10 @@ h2 Your Movies <small>{{movieCount}}</small>
 				span.movieYear(movieyear='{{movie.year}}', editable-number='movie.year', e-name='year', e-form='rowform', onbeforesave='checkYear($data)', e-min='1900', e-max='2050', e-required) {{ movie.year || 'empty' }}
 			td
 				span.movieDirector(moviedirector='{{movie.director}}', editable-text='movie.director', e-form='rowform', e-name='director', onbeforesave='checkDirector($data)', e-required) {{ movie.director || 'empty' }}
-			td
+			td.text-center
 				span.movieWatched(moviewatched='{{movie.watched}}', e-ng-change='toggleRating(this, movie)', editable-checkbox='movie.watched', e-form='rowform', e-name='watched') {{ movie.watched && 'Watched' || 'Not Watched' }}
-			td
-				span.movieRating.rating(movierating='{{movie.rating}}', e-ng-disabled='!movie.watched', editable-number='movie.rating', e-form='rowform', e-name='rating', e-min='0', e-max='5') {{ movie.rating || 'Not Yet Rated' }}
+			td.text-center
+				span.movieRating.rating(movierating='{{movie.rating}}', e-ng-disabled='!movie.watched', editable-number='movie.rating', e-form='rowform', e-name='rating', e-min='0', e-max='5') {{ movie.rating || 'Unrated' }}
 			td.text-center
 				button.btn.btn-block.btn-default(type='button', ng-click='rowform.$show()', ng-show='!rowform.$visible') Edit
 				
