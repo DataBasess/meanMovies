@@ -17,6 +17,7 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
 
 		Movie.create(newMovie).then(function successCallback(response) {
 			// console.log('success')
+			$scope.hasPlot = false;
 			$scope.saveSuccess = true;
 			$scope.saveError = false;
 			$scope.msgText = "'" + $scope.newMovieTitle + "' sucessfully saved!";
@@ -25,6 +26,7 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
 		}, function errorCallback(response) {
 			// console.log('error')
 			// console.log(response)
+			$scope.hasPlot = false;
 			$scope.saveSuccess = false;
 			$scope.saveError = true;
 			$scope.msgText = "Save Error!! " + response.data.error.errmsg
@@ -79,7 +81,6 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
 		var selected = $item.split(' | ');
 		$scope.newMovieTitle = selected[0];
 		$scope.newMovieYear = +selected[1];
-
 		getDirector(selected[0]);
 	}
 
@@ -113,11 +114,11 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
 		    t: val
 		  }
 		}).then(function(response){
-			// console.log(response.data.Director)
+			// console.log(response.data)
 			if (response.data.Error) return response.data.Error
+			$scope.hasPlot = true;
+			$scope.thePlot = response.data.Plot
 			return $scope.newMovieDirector = response.data.Director
-
-
 		});
 	};
 
