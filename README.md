@@ -26,15 +26,12 @@ v5.1.0
 ## Installation
 1. Download this repository: `git clone https://github.com/jewkesy/meanMovies.git .`
 2. Install npm modules: `npm install`
-3. Install bower: `npm install bower -g`
+3. Install bower: `sudo npm install bower -g`
 4. Install bower dependencies `$ bower install`
-5. Install nodemon: `npm install nodemon -g`
+5. Install nodemon (optional): `sudo npm install nodemon -g`
 
 ## Running Things
-1. Ensure you have MongoDB installed and running.  Db configuration is here:  `$ ./config/db.url`
-2. Import a sample dataset: `$ mongoimport --db movies --collection movies --file movies.json --jsonArray  --drop`
+1. Ensure you have MongoDB installed and running.  Db configuration is here:  `$ ./config/db.js`
+2. Import a sample dataset (optional): `$ mongoimport --db movies --collection movies --file movies.json --jsonArray  --drop`
 3. Start up the server: `nodemon` or `node server.js`
 4. Point your browser at http://localhost:8080
-
-
-Based upon an initial project by scotch.io
