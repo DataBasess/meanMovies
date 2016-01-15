@@ -18,6 +18,11 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			controller: 'MovieController'
 		})
 
+		.when('/isotope', {
+			templateUrl: 'partials/isotope',
+			controller: 'IsotopeController'
+		})
+
 		.when('/about', {
 			templateUrl: 'partials/about',
 			controller: 'AboutController'	

@@ -10,6 +10,7 @@
     "angular-chart.js": "~0.8.8",
     "Chart.js": "~1.0.2",
     "typeahead.js": "~0.11.1",
-    "angular-typeahead": "~0.3.1"
+    "angular-typeahead": "~0.3.1",
+    "angular-isotope": "~0.1.8"
   }
 }

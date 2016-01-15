@@ -22,6 +22,8 @@ html(lang='en')
 		script(src='bower_components/Chart.js/Chart.min.js')
 		script(src='bower_components/angular-chart.js/dist/angular-chart.js')
 		script(src='bower_components/jquery/dist/jquery.min.js')
+		script(src='bower_components/isotope/dist/isotope.pkgd.min.js')
+		script(src='bower_components/angular-isotope/dist/angular-isotope.min.js')    
 
 		// ANGULAR CUSTOM
 		script(src='js/utils.js')
@@ -32,6 +34,8 @@ html(lang='en')
 		script(src='js/services/AboutService.js')
 		script(src='js/controllers/ChartCtrl.js')
 		script(src='js/services/ChartService.js')
+		script(src='js/controllers/IsotopeCtrl.js')
+		script(src='js/services/IsotopeService.js')
 		script(src='js/appRoutes.js')
 		script(src='js/app.js')
 
@@ -57,6 +61,8 @@ html(lang='en')
 									a(href='/movies') Movies
 								li(ng-class="{ active: isActive('/charts')}")
 									a(href='/charts') Charts
+								li(ng-class="{ active: isActive('/isotope')}")
+									a(href='/isotope') Isotope
 								li(ng-class="{ active: isActive('/about')}")
 									a(href='/about') About
 
