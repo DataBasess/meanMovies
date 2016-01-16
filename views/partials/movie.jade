@@ -36,7 +36,7 @@ h2 Add New Movie
 hr
 h2 Your Movies <small>{{movieCount}}</small>
 .row
-	table.table.table-striped.table-bordered.table-condensed
+	table.table.table-striped.table-bordered.table-condensed(ng-init='init()')
 		tr
 			th.text-center Title
 			th.text-center Year
@@ -44,7 +44,7 @@ h2 Your Movies <small>{{movieCount}}</small>
 			th.text-center Watched
 			th.text-center Rating
 			th.text-center Actions
-		tr(ng-repeat='movie in movies')
+		tr(ng-repeat='movie in movies' )
 			td
 				span.movieTitle(movetitle='{{movie.title}}', editable-text='movie.title', e-name='title', e-form='rowform', onbeforesave='checkTitle($data)', e-required) {{ movie.title || 'empty' }}
 			td

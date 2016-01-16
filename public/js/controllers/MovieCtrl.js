@@ -2,7 +2,7 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
 
 	$scope.tagline = "Go ahead, make my day";
 
-	grabMovies();
+	$scope.init = function () { grabMovies(); }
 
 	$scope.createMovie = function (isValid) {
 		if (!isValid) return;
@@ -123,6 +123,7 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
 	};
 
 	function grabMovies() {
+		// console.log('grabbing movies')
 		Movie.get().success(function (movies) {
 			// movies.sort(yearSort)
 			$scope.movieCount = movies.length + ' movies'
