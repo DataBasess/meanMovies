@@ -1,8 +1,8 @@
 angular.module('MovieCtrl', []).controller('MovieController', function($scope, $http, Movie) {
 
 	$scope.tagline = "Go ahead, make my day";
-
-	$scope.init = function () { grabMovies(); }
+// grabMovies();
+	$scope.grabMovies = function () { grabMovies(); }
 
 	$scope.createMovie = function (isValid) {
 		if (!isValid) return;
