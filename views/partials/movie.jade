@@ -54,7 +54,7 @@ h2 Your Movies <small>{{movieCount}}</small>
 			td.text-center
 				span.movieWatched(moviewatched='{{movie.watched}}', e-ng-change='toggleRating(this, movie)', editable-checkbox='movie.watched', e-form='rowform', e-name='watched') {{ movie.watched && 'Watched' || 'Not Watched' }}
 			td.text-center
-				span.movieRating.rating(movierating='{{movie.rating}}', e-ng-disabled='!movie.watched', editable-number='movie.rating', e-form='rowform', e-name='rating', e-min='0', e-max='5') {{ movie.rating || 'Unrated' }}
+				span.movieRating.rating(movierating='{{movie.rating}}', e-ng-disabled='!movie.watched', editable-select='movie.rating', e-ng-options="s.value as s.text for s in ratingScale", e-form='rowform', e-name='rating', e-min='0', e-max='5') {{ movie.rating || 'Unrated' }}
 			td.text-center
 				button.btn.btn-block.btn-default(type='button', ng-click='rowform.$show()', ng-show='!rowform.$visible') Edit
 				

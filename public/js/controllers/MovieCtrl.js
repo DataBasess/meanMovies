@@ -4,6 +4,16 @@ angular.module('MovieCtrl', []).controller('MovieController', function($scope, $
 // grabMovies();
 	$scope.grabMovies = function () { grabMovies(); }
 
+	$scope.ratingScale = [
+	    {value: 1, text: '1'},
+	    {value: 2, text: '2'},
+	    {value: 3, text: '3'},
+	    {value: 4, text: '4'},
+	    {value: 5, text: '5'}
+	  ]; 
+
+	
+
 	$scope.createMovie = function (isValid) {
 		if (!isValid) return;
 		// if (!$scope.newMovieTitle || !$scope.newMovieYear || !$scope.newMovieDirector) return;
