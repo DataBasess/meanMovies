@@ -1,8 +1,8 @@
 angular.module('ChartService', []).factory('Chart', ['$http', function($http) {
 	return {
-	    // call to GET all movies
+	    // call to GET all assets
 	    get : function() {
-	        return $http.get('/api/movies');
+	        return $http.get('/api/assets');
 	    }
 	}
 }]);

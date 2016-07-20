@@ -1,4 +1,20 @@
-angular.module('ChartCtrl', []).controller('ChartController', function($scope, Movie) {
+angular.module('ChartCtrl', ['chart.js'])
+// Optional configuration
+  .config(['ChartJsProvider', function (ChartJsProvider) {
+
+   // Configure all charts
+    ChartJsProvider.setOptions({
+      // chartColors: ['#FF5252', '#FF8A80'],
+      legend: {
+	        	display: true
+	        },
+      responsive: true
+    });
+    ChartJsProvider.setOptions('line', {
+      showLines: false
+    });
+  }])
+.controller('ChartController', function($scope, Movie) {
 
 	$scope.tagline = "That's no moon. It's a space station";
 
@@ -12,7 +28,7 @@ angular.module('ChartCtrl', []).controller('ChartController', function($scope, M
 	function buildWatchedChart(movies) {
 		var labels = ['Not Watched', 'Watched']
 		
-		var movieCount = []
+		var movieCount = [{key: 'Watched', count :0}, {key: 'Not Watched', count:0}]
 		for (var i = 0; i < movies.length; i++) {
 			if (movies[i].watched) { 
 				upsertArray('Watched', movieCount)
@@ -29,11 +45,15 @@ angular.module('ChartCtrl', []).controller('ChartController', function($scope, M
 		for (var i = 0; i < movieCount.length; i++) {
 			chartData.push(movieCount[i].count)
 		}
-
+		// chartData =  [300, 50, 100]
 		// console.log(chartData)
 
 		$scope.watchedLabels = labels
 		$scope.watchedData = chartData
+
+		$scope.watchedOnClick = function (points, evt) {
+			// console.log(points, evt);
+		};
 	}
 
 	function buildRatingsChart(movies) {

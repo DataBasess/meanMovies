@@ -1,17 +1,17 @@
-angular.module('IsotopeCtrl', []).controller('IsotopeController', function($scope, $http, Movie) {
+angular.module('IsotopeCtrl', []).controller('IsotopeController', function($scope, $http, Asset) {
 
-	$scope.tagline = "Take your stinking paws off me, you damned dirty ape!";	
+	$scope.tagline = "Grabbing your Assets";	
 
 	$scope.isoInit = function() {
-		$scope.movies = grabMovies();
+		$scope.assets = grabAssets();
 	}
 
-	function grabMovies() {
+	function grabAssets() {
 		// console.log('grabbing movies')
-		Movie.get().success(function (movies) {
+		Asset.get().success(function (assets) {
 			// movies.sort(yearSort)
-			$scope.movieCount = movies.length + ' movies'
-			$scope.movies = movies
+			$scope.assetCount = assets.length + ' assets'
+			$scope.assets = assets
 		});
 	}
 });

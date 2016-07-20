@@ -64,3 +64,15 @@ p.item > span {
   margin-left: 4px;
   margin-right: 4px;
 }
+
+.item {
+  border: 1px solid grey;
+  padding: 5px;
+  border-radius: 12px;
+  text-overflow: ellipsis;
+  min-width: 40px
+}
+
+.item > span {
+  display: inline-block;
+}
