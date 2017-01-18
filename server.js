@@ -5,6 +5,7 @@ var mongoose       = require('mongoose');
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 var path           = require('path');
+var compression	   = require('compression');
 
 // configuration ===========================================
 	
@@ -24,6 +25,7 @@ process.on('SIGINT', function() {
   }); 
 }); 
 
+app.use(compression());
 // get all data/stuff of the body (POST) parameters
 app.use(bodyParser.json()); // parse application/json 
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
